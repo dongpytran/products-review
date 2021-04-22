@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@700&family=Krona+One&family=Roboto&family=Ubuntu:wght@500&family=Ropa+Sans&family=Noto+Sans+SC&display=swap');
+
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* NavBar Starts */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25em 10em 0.25em 7em;
+
+    background: radial-gradient(50% 16612.72% at 50% 100%, #7B061A 0%, #240B36 100%);
+}
+
+.brand a {  /* Brand Name */
+    text-decoration: none;
+    font-family: "Caveat", sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+}
+
+.brand {
+    margin: 0;
+}
+
+.expand {
+    display: none;
+    color: #ffffff;
+}
+
+.expand:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.links li {
+    font-family: "Ropa Sans", sans-serif;   
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.links a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1rem;
+}
+
+.links a:hover {
+    opacity: 0.6;
+}
+
+.collapse-links {
+    list-style: none;
+    background: radial-gradient(50% 16612.72% at 50% 100%, #7B061A 0%, #240B36 100%);
+    transition: max-height 200ms linear;
+
+    padding: 0 0 1px 0;
+    margin: 0;
+    max-height: 135px;
+    overflow-y: hidden;
+}
+
+.collapse-links li {
+    padding: 6px 40px;
+}
+
+.collapse-links li:hover {
+    box-shadow: 0 0 10px #000;
+}
+
+.collapse-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Ropa Sans", sans-serif;
+    font-size: 1rem;
+}
+/* NavBar Ends */
+
+/* Flash message */
+.flash {
+    margin: 1rem auto;
+    width: 80%;
+    max-width: 1000px;
+    padding: 1rem 0;
+    text-align: center;
+    font-family: "Noto Sans SC", sans-serif;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.error {
+    color: crimson;
+    background-color: rgba(255, 0, 0, 0.1);
+    border: 1px solid red;
+}
+
+.success {
+    color: darkgreen;
+    background-color: rgba(0, 255, 0, 0.1);
+    border: 1px solid green;
+}
+/* End Flash message */
+
+
+/* Utility classes */
+.hide-nav {
+    max-height: 0px;
+}
+
+@media screen and (max-width: 800px) {
+
+    .links {
+        display: none;
+    }
+
+    .expand {
+        display: inline-block;
+        font-size: 30px;
+    }
+
+    .navbar {
+        height: 50px;
+        padding: 0.25em 2em 0.25em 1.5em;
+    }
+}

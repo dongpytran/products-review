@@ -1,0 +1,27 @@
+/* Footer starts */
+footer h3 {
+    margin: 0;
+    padding: 0.5em;
+    font-family: "Ropa Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 100;
+    color: #ffffff9d;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+
+    background: radial-gradient(50% 16612.72% at 50% 100%, #7B061A 0%, #240B36 100%);
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: #ffffff9d;
+}
+
+footer a:hover {
+    opacity: 0.7;
+}
+/* Footer ends */

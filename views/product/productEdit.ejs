@@ -1,0 +1,52 @@
+<%- include("../partials/header") %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/forms.css">
+</head>
+<body>
+
+    <%- include("../partials/navbar") %> 
+    
+    <div class="new-cg">
+        <h1>CẬP NHẬT THÔNG TIN SẢN PHẨM</h1>
+
+        <form action="/products/<%= ground._id %>?_method=PUT" method="POST">
+            <label for="CGname"> Tên Sản Phẩm 
+                <input type="text" name="ground[name]" id="CGname" value="<%= ground.name %>" required>
+            </label>
+
+            <label for="imageUrl"> URL Hình Ảnh
+                <input type="text" name="ground[image]" id="imageUrl" value="<%= ground.image %>" required>
+            </label>
+
+            <label for="desc"> Mô Tả <sup>*</sup>
+                <textarea name="ground[description]" id="desc" required><%= ground.description %></textarea>
+            </label>
+
+            <label for="rate"> Giá Bán
+                <input type="text" name="ground[cost]" id="rate" value="<%= ground.cost %>" required>
+            </label>
+
+            <label for="windowOpen"> Ngày Sản Xuất <sup>*</sup>
+                <input type="text" name="ground[bookingStart]" id="windowOpen" value="<%= ground.bookingStart %>" required>
+            </label>
+
+            <label for="windowClose"> Hạn Sử Dụng <sup>*</sup>
+                <input type="text" name="ground[bookingClose]" id="windowClose" value="<%= ground.bookingClose %>" required>
+            </label>
+
+            <label for="no"> Thông Tin Liên Lạc <sup>*</sup>
+                <input type="text" name="ground[contact]" id="no" value="<%= ground.contact %>" required>
+            </label>
+
+            <label for="location"> Xuất Xứ <sup>*</sup>
+                <input type="text" name="ground[location]" id="location" value="<%= ground.location %>" required>
+            </label>
+
+            <label for="amenities"> Tag <span style="font-size: 14px; font-family: Ubuntu; font-weight: lighter; color: rgb(90, 90, 90);">(ngăn cách bởi dấu phẩy)</span> <sup>*</sup>
+                <input type="text" name="ground[amenities]" id="amenities" value="<%= ground.amenities %>" required>
+            </label>
+
+            <input type="submit" value="SUBMIT">
+        </form>
+    </div>
+
+<%- include("../partials/footer") %> 

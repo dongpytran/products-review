@@ -1,0 +1,55 @@
+<%- include("../partials/header") %>
+    
+    <link rel="stylesheet" type="text/css" href="/stylesheets/userShow.css">
+</head>
+<body>
+
+    <%- include("../partials/navbar") %>
+
+    <div class="container">
+        <div class="user-info-display">
+            <img src="https://cdn0.iconfinder.com/data/icons/hr-business-and-finance/100/face_human_blank_user_avatar_mannequin_dummy-512.png" alt="Profile Image">
+            <div class="info-user">
+                <h3 class="username"><%= user.name %></h3>
+                <span style="margin-top: 0.7rem;"><i class="icon envelope"></i>&nbsp;<%= user.email %></span>
+                <span style="margin-top: 0.2rem;"><i class="icon phone"></i>&nbsp;<%= user.phone %></span>
+            </div>
+
+            <div class="controls">
+                <% if (currentUser !== undefined && user.username === currentUser.username) { %>
+                    <button style="background-color: crimson;"><a href="/logout" style="width: 50px;">Logout</a></button>
+                    <button style="background-color: goldenrod;"><a href="/users/<%= user.username %>/edit" style="width: 50px;">Edit</a></button>
+                <% } %>
+            </div>
+        </div>
+
+        <div style="font-family: 'Ubuntu', sans-serif; margin: 2rem 0;">
+            <% if (user.length === 0) { %>
+                <h1 style="text-align: center;">NO CAMPGROUNDS ADDED</h1>
+            <% } else { %>
+                <h1 style="text-align: center;">CAMPGROUNDS ADDED</h1>
+            <% } %>
+        </div>
+
+        <div class="added-campgrounds">
+            <% for (var i = 0; i < user.length; i++) { %>
+                <a href="/products/<%= user[i]._id %>">
+                    <div class="card">
+                        <img class="image" src="<%= user[i].image %>" alt="Campground Image">
+                        <div class="info">
+                            <div class="name-cost">
+                                <span><%= user[i].name %></span>
+                                <span>$<%= user[i].cost %></span>
+                            </div>
+                            <% if (user[i].comments.length > 0) { %>
+                                <span class="rating"><%= Math.round(user[i].rating / user[i].comments.length) %> Stars</span>
+                            <% } else { %>
+                                <span class="rating">0 Stars</span>
+                            <% } %>
+                        </div>
+                    </div>
+                </a>
+            <% } %>
+        </div>
+    </div>
+<%- include("../partials/footer") %>

@@ -1,0 +1,54 @@
+<%- include("../partials/header") %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/forms.css">
+</head>
+<body>
+
+    <%- include("../partials/navbar") %> 
+
+    <div class="new-cg">
+        <h1>Thêm Sản Phẩm</h1>
+
+        <form action="/products" method="POST">
+            <label for="CGname"> Tên Sản Phẩm <sup>*</sup>
+                <input type="text" name="product[name]" id="CGname" required>
+            </label>
+
+            <label for="imageUrl"> URL Hình Ảnh <sup>*</sup>
+                <input type="text" name="product[image]" id="imageUrl" required>
+            </label>
+
+            <label for="desc"> Mô Tả <sup>*</sup>
+                <textarea name="product[description]" id="desc" required></textarea>
+            </label>
+
+            <label for="rate"> Giá bán <sup>*</sup>
+                <input type="text" name="product[cost]" id="rate" required>
+            </label>
+
+            <label for="windowOpen"> Ngày Sản Xuất <sup>*</sup>
+                <input type="text" name="product[bookingStart]" id="windowOpen" required>
+            </label>
+
+            <label for="windowClose"> Hạn Sử Dụng <sup>*</sup>
+                <input type="text" name="product[bookingClose]" id="windowClose" required>
+            </label>
+
+            <label for="no"> Thông Tin Liên Lạc <sup>*</sup>
+                <input type="text" name="product[contact]" id="no" required>
+            </label>
+
+            <label for="location"> Xuất Xứ <sup>*</sup>
+                <input type="text" name="product[location]" id="location" required>
+            </label>
+
+            <label for="amenities"> Tag <span style="font-size: 14px; font-family: Ubuntu; font-weight: lighter; color: rgb(90, 90, 90);">(ngăn cách bởi dấu phẩy)</span> <sup>*</sup>
+                <input type="text" name="product[amenities]" id="amenities" required>
+            </label>
+
+            <input type="submit" value="THÊM">
+        </form>
+
+        <a href="/products">TRỞ VỀ</a>
+    </div>
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,18 @@
+.hide {
+    display: none;
+}
+
+.selected {
+    color: rgb(150, 0, 0);
+    text-decoration: underline;
+}
+
+#signup--btn:hover, 
+#login--btn:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+h1 {
+    margin-bottom: 2rem;
+}

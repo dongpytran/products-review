@@ -1,0 +1,55 @@
+<%- include("../partials/header") %>
+    
+    <link rel="stylesheet" type="text/css" href="/stylesheets/forms.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/userAuth.css">
+</head>
+<body>
+
+    <%- include("../partials/navbar") %> 
+
+    <div class="new-cg">
+        <h1>
+            <span id="login--btn"  class="selected">Đăng Nhập</span>
+            &nbsp;&nbsp;
+            <span id="signup--btn" class="">Đăng ký</span>
+        </h1>
+
+        <form action="/signup" method="POST" id="signup" class="hide">
+            <label for="Name"> Họ và Tên<sup>*</sup>
+                <input type="text" name="name" id="Name" required>
+            </label>
+
+            <label for="Email"> Email<sup>*</sup>
+                <input type="email" name="email" id="Email" required>
+            </label>
+
+            <label for="Phone"> Số Điện Thoại<sup>*</sup>
+                <input type="text" name="phone" id="Phone" required>
+            </label>
+
+            <label for="Uname"> Tên Tài Khoản<sup>*</sup>
+                <input type="text" name="username" id="Uname" required>
+            </label>
+
+            <label for="Pwd"> Mật Khẩu<sup>*</sup>
+                <input type="password" name="password" id="Pwd" required>
+            </label>
+
+            <input type="submit" value="Đăng Ký">
+        </form>
+
+        <form action="/login" method="POST" id="login">
+            <label for="Uname"> Tài Khoản<sup>*</sup>
+                <input type="text" name="username" id="Uname" required>
+            </label>
+
+            <label for="Pwd"> Mật Khẩu<sup>*</sup>
+                <input type="password" name="password" id="Pwd" required>
+            </label>
+
+            <input type="submit" value="Đăng Nhập">
+        </form>
+    </div>
+
+    <script type="text/javascript" src="/scripts/login_signup.js"></script>
+<%- include("../partials/footer") %>

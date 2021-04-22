@@ -1,0 +1,34 @@
+    <nav class="navbar">
+        <h3 class="brand"><a href="/">REVIEW XAM</a></h3>
+
+        <ul class="links">
+            <li><a href="/products/new">THÊM SẢN PHẨM</a></li>
+        <a href="/products"><li>Trang Chủ</li></a>
+            <% if (currentUser !== undefined) { %>
+                <a href="/users/<%= currentUser.username %>"><li><i class="user circle icon"></i>&nbsp;<%= currentUser.name %></li></a>
+            <% } else { %> 
+                <a href="/login"><li>Đăng Nhập / Đăng Ký</l1></a>
+            <% } %>
+        </ul>
+        <span class="expand"><i class="align justify icon small" style="margin: 0;"></i></span>
+    </nav>
+    <ul class="collapse-links hide-nav">
+        <a href="/products/new"><li>ADD&nbsp;CAMP</li></a>
+        <a href="/products"><li>HOME</li></a>
+        <% if (currentUser !== undefined) { %>
+            <a href="/users/<%= currentUser.username %>"><li><i class="user circle icon"></i>&nbsp;<%= currentUser.name %></li></a>
+        <% } else { %> 
+            <a href="/login"><li>LOGIN/SIGNUP</li></a>
+        <% } %>
+        
+    </ul>
+
+    <script src="/scripts/controller-nav.js"></script>
+
+    <% if (error[0] !== undefined) { %>
+        <div class="flash error"><%= error %></div>
+    <% } %>
+
+    <% if (success[0] !== undefined) { %>
+        <div class="flash success"><%= success %></div>
+    <% } %>

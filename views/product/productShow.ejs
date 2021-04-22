@@ -1,0 +1,155 @@
+<%- include("../partials/header") %> 
+<link rel="stylesheet" type="text/css" href="/stylesheets/productShow.css">
+
+</head>
+<body>
+
+    <%- include("../partials/navbar") %> 
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="side-info">
+                <div class="info-heading"><i class="calendar alternate outline icon"></i> Ngày SX / Hạn SD</div>
+                <div class="info-value"><%= ground.bookingStart %> / <%= ground.bookingClose %></div>
+            </div>
+
+            <div class="side-info">
+                <div class="info-heading"><i class="location arrow icon"></i> 
+                    Xuất Xứ
+                    <br><br>
+                    <%= ground.location %>
+                </div>
+            </div>
+
+            <div class="side-info">
+                <div class="info-heading"><i class="phone icon"></i> Thông Tin Liên Lạc</div>
+                <div class="info-value"><%= ground.contact %></div>
+            </div>
+
+            <div class="side-info">
+                <div class="info-heading"><i class="quidditch icon"></i> Tag</div>
+                <div class="info-value"><%= ground.amenities %></div>
+            </div>
+        </div> 
+    
+        <div class="main">
+            <div class="camp">
+                <img src="<%= ground.image %>" alt="Product">
+                <div class="info">
+                    <span class="name-cost">
+                        <h3 class="name"><%= ground.name %></h3>
+                        <h3><%= ground.cost %> VND / sẳn phẩm</h3>
+                    </span>
+                    <p><%= ground.description %></p>
+                    <span class="stars" style="margin-top: 10px;">
+                        <% if (ground.comments.length > 0) { %>
+                            <h4>Đánh Giá : <%= Math.round(ground.rating / ground.comments.length) %></h4>
+                        <% } else { %>
+                            <h4>Đánh Giá : 0</h4>
+                        <% } %>
+                        <h4><%= ground.comments.length %> Bình luận</h4>
+                    </span>
+
+                    <% if (currentUser !== undefined && ground.owner === currentUser.username) { %>
+                        <span class="ud">
+                            <a href="/products/<%= ground._id %>/edit"><button style="background-color: rgb(199, 151, 29);">Sửa</button></a>
+                            
+                            <form action="/products/<%= ground._id %>?_method=DELETE" method="POST" id="form--btn">
+                                <input type="submit" style="background-color: crimson;" value="Xoá">
+                            </form>
+                        </span>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+
+        <div class="comments">
+            <h1 class="title">
+                Các Đánh Giá
+                <button>Để Lại Đánh Giá</button>
+            </h1>
+            <form action="/products/<%= ground._id %>/comment/new" method="POST" class="hide-addComment" id="new-comment">
+                <textarea name="content" id="comment" rows="5" required></textarea>
+
+                <div class="rating-submit">
+                    <span>Mức : </span>
+                    <input type="radio" id="1" name="rating" value="1">
+                    <label for="1">1&nbsp;&nbsp;</label>
+
+                    <input type="radio" id="2" name="rating" value="2">
+                    <label for="2">2&nbsp;&nbsp;</label>
+                    
+                    <input type="radio" id="3" name="rating" value="3">
+                    <label for="3">3&nbsp;&nbsp;</label>
+
+                    <input type="radio" id="4" name="rating" value="4">
+                    <label for="4">4&nbsp;&nbsp;</label>
+                    
+                    <input type="radio" id="5" name="rating" value="5">
+                    <label for="5">5</label>
+                </div>
+    
+                <input style="margin-top: 10px;" type="submit" value="Submit">
+            </form>
+    
+            <div class="user-comments">
+                <% var cnt = 0 %>
+                <% for (let comment of ground.comments) { %>
+                    <div class="comment">
+                        <div class="cmt-head">
+                            <h4>
+                                <div class="img"><%= comment.username[0].toUpperCase() %></div>
+                                &nbsp;&nbsp;
+                                <a href="/users/<%= comment.username %>"><%= comment.username %></a>
+                            </h4>
+                            <span style="display: flex;">
+                                <% var edit = false %>
+                                <% if (currentUser !== undefined && comment.author.equals(currentUser._id)) { %>
+                                    <% edit = true %>
+                                    <span class="cmt-controls" style="margin-right: 10px; display: flex; align-items: center;">
+                                        <i class="edit icon" style="color: #000; margin-right: 10px;"></i>
+                                        <form action="/products/<%= ground._id %>/comment/<%= comment._id %>/delete?_method=DELETE" method="POST" id="del">
+                                            <button><i class="trash icon" style="color: #000;"></i></button>
+                                        </form>
+                                    </span>
+                                <% } %>
+                                <span id="given-rating"><%= comment.rating %> Stars</span>&nbsp;|&nbsp;<%= comment.time.toString().slice(4, 15) %>
+                            </span>
+                        </div>
+                        <div class="content"><%= comment.content %></div>
+
+                        <% if (edit) {%>
+                            <form action="/products/<%= ground._id %>/comment/<%= comment._id %>?_method=PUT" method="POST" class="hide-addComment" id="edit-comment" data-cmtNo="<%= cnt %>">
+                                <textarea name="content" id="e-cmt" rows="5" required><%= comment.content %></textarea>
+                
+                                <div class="rating-submit">
+                                    <span>Mức : </span>
+                                    <input type="radio" id="1" name="rating" value="1">
+                                    <label for="1">1&nbsp;&nbsp;</label>
+                
+                                    <input type="radio" id="2" name="rating" value="2">
+                                    <label for="2">2&nbsp;&nbsp;</label>
+                                    
+                                    <input type="radio" id="3" name="rating" value="3">
+                                    <label for="3">3&nbsp;&nbsp;</label>
+                
+                                    <input type="radio" id="4" name="rating" value="4">
+                                    <label for="4">4&nbsp;&nbsp;</label>
+                                    
+                                    <input type="radio" id="5" name="rating" value="5">
+                                    <label for="5">5</label>
+                                </div>
+                    
+                                <input type="submit" value="Edit" style="background-color: purple; margin-bottom: 0;">
+                            </form>
+                            <% cnt++ %>
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/controller-comment.js"></script>
+
+<%- include("../partials/footer") %> 

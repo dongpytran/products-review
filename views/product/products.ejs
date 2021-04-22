@@ -1,0 +1,34 @@
+<%- include("../partials/header") %>
+    
+    <link rel="stylesheet" type="text/css" href="/stylesheets/productList.css">
+    
+</head>
+<body>
+
+    <%- include("../partials/navbar") %> 
+
+
+    <div class="lists">
+
+        <!-- Add new card for each camp -->
+        <% for (var i = 0; i < grounds.length; i++) { %>
+            <a href="/products/<%= grounds[i]._id %>">
+                <div class="card">
+                    <img class="image" src="<%= grounds[i].image %>" alt="Product Image">
+                    <div class="info">
+                        <div class="name-cost">
+                            <span><%= grounds[i].name %></span>
+                            <span><%= grounds[i].cost %> VND</span>
+                        </div>
+                        <% if (grounds[i].comments.length > 0) { %>
+                            <span class="rating"><%= Math.round(grounds[i].rating / grounds[i].comments.length) %> Stars</span>
+                        <% } else { %>
+                            <span class="rating">0 Stars</span>
+                        <% } %>
+                    </div>
+                </div>
+            </a>
+        <% } %>
+    </div>
+    
+<%- include("../partials/footer") %>

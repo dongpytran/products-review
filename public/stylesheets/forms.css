@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+
+/* Form card */
+.new-cg {
+    width: min(60%, 500px);
+    padding: 2rem;
+    margin: 2em auto;
+
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.new-cg h1 { /* Form heading */
+    margin: 0 0 1em 0;
+
+    font-family: "Ubuntu", sans-serif;
+    font-weight: normal;
+    text-align: center;
+    font-size: max(2vw, 20px);
+}
+
+input {
+    display: block;
+    width: 100%;
+    height: 25px;
+    margin-bottom: 15px;
+
+    border: none;
+    outline: none;
+    border-bottom: 1.5px solid #7B061A;
+
+    font-family: "Ubuntu", sans-serif;
+    font-size: 15px;
+    color: rgb(66, 66, 66);
+}
+
+textarea {
+    min-width: 100%;
+    max-width: 100%;
+    margin: 15px 0;
+    height: 5rem;
+    border: none;
+    outline: 2px solid #7B061A;
+}
+
+label {
+    font-family: "PT Sans", sans-serif;
+    font-size: 16px;
+    color: #7B061A;
+    font-weight: bold;
+}
+
+input[type="submit"] {  /* Submit button */
+    margin-top: 30px;
+    width: 100%;
+    background: radial-gradient(50% 16612.72% at 50% 100%, #7B061A 0%, #240B36 100%);
+    height: 40px;
+
+    font-family: "PT Sans", sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #ffffff;
+
+    outline: none;
+    border: none;
+    transition: all 100ms linear;
+}
+
+input[type="submit"]:hover {
+    opacity: 0.95;
+    background: linear-gradient(to right, #7B061A 0%, #240B36 100%);
+}
+
+input[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+.new-cg a {
+    font-family: "Noto Sans SC", sans-serif;
+    font-size: 16px;
+    color: purple;
+}
+/* Form card ends */

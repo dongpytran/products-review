@@ -1,0 +1,29 @@
+<%- include("../partials/header") %>
+    
+    <link rel="stylesheet" type="text/css" href="/stylesheets/forms.css">
+</head>
+<body>
+
+    <%- include("../partials/navbar") %> 
+
+    <div class="new-cg">
+        <h1>EDIT <%= foundUser.name %></h1>
+
+        <form action="/users/<%= foundUser.username %>?_method=PUT" method="POST" id="edit">
+            <label for="Name"> Name<sup>*</sup>
+                <input type="text" name="user[name]" id="Name" value="<%= foundUser.name %>" required>
+            </label>
+
+            <label for="Email"> Email<sup>*</sup>
+                <input type="email" name="user[email]" id="Email" value="<%= foundUser.email %>" required>
+            </label>
+
+            <label for="Phone"> Phone<sup>*</sup>
+                <input type="text" name="user[phone]" id="Phone" value="<%= foundUser.phone %>" required>
+            </label>
+
+            <input type="submit" value="Edit">
+        </form>
+    </div>
+           
+<%- include("../partials/footer") %>
